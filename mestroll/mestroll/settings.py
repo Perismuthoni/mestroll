@@ -25,7 +25,9 @@ SECRET_KEY = "django-insecure-)&vo7h0m9%0xxk6gn(#g)!08=8kexcirl5*8pr0r&u_%v5l+ty
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "code.pythonanywhere.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'https://127.0.0.1:8000']
+
 
 
 # Application definition
@@ -38,12 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "myappname",
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'social_django',  # Add this line
-
+    "allauth",
+    "allauth.account",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'allauth.account.middleware.AccountMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "mestroll.urls"
@@ -99,11 +97,11 @@ DATABASES = {
 
 # AUTH_PASSWORD_VALIDATORS = [
 #     {
-#         "NAME": 
+#         "NAME":
 # "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
 #     },
 #     {
-#         "NAME": 
+#         "NAME":
 # "django.contrib.auth.password_validation.MinimumLengthValidator",
 #     },
 #     {
@@ -141,22 +139,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = (
     # ...
-    'allauth.account.auth_backends.AuthenticationBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-    #'social_core.backends.google.GoogleOAuth2',  # Add this line
+    "allauth.account.auth_backends.AuthenticationBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
     # ...
 )
 
 # Google OAuth2 Settings
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'APP': {
-            'client_id': '409620575733-8n8g51kljh406peun31h24ff7ihoe782.apps.googleusercontent.com',
-            'secret': None,
-            'key': '',
-            'authorization_endpoint' : 'https://accounts.google.com/o/oauth2/auth',
-        }
-    }
-}
-
+# SOCIALACCOUNT_PROVIDERS = {
+#     "google": {
+#         "SCOPE": ["profile", "email"],
+#         "APP": {
+#             "client_id": "409620575733-8n8g51kljh406peun31h24ff7ihoe782.apps.googleusercontent.com",
+#             "secret": None,
+#             "key": "",
+#             "authorization_endpoint": "https://accounts.google.com/o/oauth2/auth",
+#         },
+#     }
+# }

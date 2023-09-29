@@ -10,6 +10,7 @@ from .models import Classe
 from .forms import ClasseForm
 
 
+
 @csrf_exempt
 @require_http_methods(["GET", "POST"])  # Allow both GET and POST requests
 def test_view(request):
@@ -44,7 +45,7 @@ def fetch_users(request):
 
     return JsonResponse({"users": user_data})
 
-# @csrf_exempt
+@csrf_exempt
 # @require_http_methods(["GET", "POST"])
 def fetch_user_by_email(request):
     # Get the email parameter from the POST request
